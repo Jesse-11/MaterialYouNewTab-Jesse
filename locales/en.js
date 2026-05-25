@@ -44,6 +44,20 @@ const en = {
     "todoListHover": "ToDo List",    // Keep this short
     "todoPlaceholder": "Add task...",
 
+    // Pomodoro Timer
+    "pomodoroTimerText": "Pomodoro Timer",
+    "pomodoroTimerInfo": "Track 25-minute focus and 5-minute break sessions",
+    "pomodoroHover": "Pomodoro",
+    "pomodoroFocus": "Focus",
+    "pomodoroBreak": "Break",
+    "pomodoroStart": "Start",
+    "pomodoroPause": "Pause",
+    "pomodoroReset": "Reset",
+    "pomodoroSkip": "Skip",
+    "pomodoroFocusLength": "Focus length",
+    "pomodoroBreakLength": "Break length",
+    "pomodoroMinutesSuffix": "min",
+
     // Clock
     "hideClockBox": "Hide Clock",
     "hideClockBoxInfo": "Hide the clock and date",

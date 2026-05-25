@@ -1457,6 +1457,202 @@ body #bookmarkButton.bookmark-button.rotate {
 	border-bottom-right-radius: 18px;
 }
 
+/* ------------------ Pomodoro Timer Section -------------------- */
+.pomodoroCont {
+	position: fixed;
+	display: inline-block;
+	margin: 10px;
+	top: var(--gap);
+	inset-inline-start: var(--gap);
+	font-size: 25px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.todoListCont[style="display: flex;"] ~ .pomodoroCont {
+	top: calc(var(--gap) + 52px);
+}
+
+.pomodoroCont:hover .tooltip-text {
+	visibility: visible;
+	opacity: 1;
+}
+
+.pomodoro-container {
+	display: grid;
+	gap: 12px;
+	padding: 14px;
+	background-color: var(--accentLightTint-blue);
+	background-color: color-mix(
+		in srgb,
+		var(--accentLightTint-blue) 80%,
+		transparent
+	);
+	backdrop-filter: blur(2px);
+	border-radius: 30px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+	border: 8px solid var(--bg-color-blue);
+	grid-template-columns: 282px;
+	justify-items: center;
+	position: fixed;
+	top: 85px;
+	inset-inline-start: 15px;
+	box-sizing: border-box;
+	z-index: 3;
+	transform-origin: top left;
+}
+
+.todoListCont[style="display: flex;"] ~ .pomodoro-container {
+	top: 137px;
+}
+
+#pomodoroHeading {
+	font-size: 1.4rem;
+	text-align: center;
+}
+
+.pomodoro-session-row {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	color: var(--textColorDark-blue);
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+
+.pomodoro-dial {
+	--pomodoro-progress: 0%;
+	width: 168px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	background:
+		radial-gradient(
+			circle,
+			color-mix(in srgb, var(--accentLightTint-blue) 10%, white) 58%,
+			transparent 59%
+		),
+		conic-gradient(
+			var(--darkColor-blue) var(--pomodoro-progress),
+			color-mix(in srgb, var(--darkColor-blue) 18%, transparent) 0
+		);
+}
+
+.black-theme .pomodoro-dial {
+	background:
+		radial-gradient(circle, #5f5f5f 58%, transparent 59%),
+		conic-gradient(
+			var(--accentLightTint-dark) var(--pomodoro-progress),
+			color-mix(in srgb, var(--accentLightTint-dark) 20%, transparent) 0
+		);
+}
+
+#pomodoroTime {
+	color: var(--darkColor-blue);
+	font-size: 2.3rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+}
+
+.black-theme #pomodoroTime {
+	color: var(--whitishColor-blue);
+}
+
+.pomodoro-controls {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 8px;
+}
+
+.pomodoro-controls button {
+	min-width: 0;
+	height: 40px;
+	border: none;
+	border-radius: 20px;
+	background-color: var(--darkColor-blue);
+	color: white;
+	font-size: 0.92rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.pomodoro-controls button:hover:not(:disabled) {
+	background-color: var(--darkerColor-blue);
+	color: var(--whitishColor-blue);
+}
+
+.pomodoro-controls button:active:not(:disabled) {
+	transform: scale(0.96);
+}
+
+.pomodoro-controls button:disabled {
+	opacity: 0.45;
+	cursor: default;
+}
+
+.pomodoro-duration-settings {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+}
+
+.pomodoro-duration-field {
+	min-width: 0;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 4px 6px;
+	align-items: center;
+	background: white;
+	background-color: color-mix(in srgb, var(--accentLightTint-blue) 10%, white);
+	border-radius: 18px;
+	padding: 8px 10px;
+	color: var(--textColorDark-blue);
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+
+.black-theme .pomodoro-duration-field {
+	background-color: #5f5f5f;
+	color: var(--whitishColor-blue);
+}
+
+.pomodoro-duration-field span:first-child {
+	grid-column: 1 / -1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pomodoro-duration-field input {
+	width: 58px;
+	height: 30px;
+	border: none;
+	border-radius: 14px;
+	outline: none;
+	background-color: var(--accentLightTint-blue);
+	color: var(--darkColor-blue);
+	font-size: 1rem;
+	font-weight: 700;
+	text-align: center;
+}
+
+.pomodoro-duration-field input:focus {
+	outline: 1px solid var(--darkColor-blue);
+}
+
+.black-theme .pomodoro-duration-field input {
+	background-color: var(--darkColor-dark);
+	color: var(--whitishColor-blue);
+}
+
 /* ---------------------------------------------------------- */
 
 .centerDiv {
@@ -4752,6 +4948,15 @@ body[data-bg="wallpaper"] .dropdown-content {
 		scale: 0.8;
 	}
 	.todo-container {
+		transform-origin: top left;
+		scale: 0.85;
+		position: fixed;
+	}
+	.pomodoroCont {
+		transform-origin: top left;
+		scale: 0.8;
+	}
+	.pomodoro-container {
 		transform-origin: top left;
 		scale: 0.85;
 		position: fixed;

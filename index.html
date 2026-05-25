@@ -39,6 +39,7 @@
     <script defer src="scripts/ai-tools.js"></script>
     <script defer src="scripts/bookmarks.js"></script>
     <script defer src="scripts/todo-list.js"></script>
+    <script defer src="scripts/pomodoro-timer.js"></script>
     <script defer src="scripts/google-apps.js"></script>
     <script defer src="scripts/voice-search.js"></script>
     <script defer src="scripts/backup-restore.js"></script>
@@ -106,6 +107,44 @@
         </div>
         <ul class="todolist" id="todoullist">
         </ul>
+    </div>
+
+    <!-- --------------------- Pomodoro Timer Setup Starting --------------------- -->
+    <div class="pomodoroCont" id="pomodoroCont">
+        <svg id="pomodoroIcon" xmlns="http://www.w3.org/2000/svg" class="dot-icon" width="36" height="36"
+            viewBox="0 0 36 36">
+            <path
+                d="M18 6.5c-5.8 0-10.5 4.7-10.5 10.5S12.2 27.5 18 27.5 28.5 22.8 28.5 17 23.8 6.5 18 6.5Zm0 3c4.14 0 7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5-7.5-3.36-7.5-7.5 3.36-7.5 7.5-7.5Zm-1.5 3.25v4.7c0 .42.18.82.5 1.1l3.15 2.75c.62.55 1.57.48 2.12-.14.55-.63.48-1.58-.14-2.12l-2.63-2.3v-3.99c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5ZM9 5.25c-.59-.59-1.54-.59-2.12 0L4.75 7.38c-.59.58-.59 1.53 0 2.12.58.59 1.53.59 2.12 0L9 7.37c.59-.58.59-1.53 0-2.12Zm20.12 0c-.58-.59-1.53-.59-2.12 0-.59.59-.59 1.54 0 2.12l2.13 2.13c.58.59 1.53.59 2.12 0 .59-.59.59-1.54 0-2.12l-2.13-2.13Z" />
+        </svg>
+        <span class="tooltip-text" id="pomodoroHover">Pomodoro</span>
+    </div>
+
+    <div id="pomodoroContainer" class="pomodoro-container" style="display: none;">
+        <h2 id="pomodoroHeading">Pomodoro Timer</h2>
+        <div class="pomodoro-session-row">
+            <span id="pomodoroSessionLabel">Focus</span>
+            <span id="pomodoroDurationLabel">25 min</span>
+        </div>
+        <div class="pomodoro-dial" id="pomodoroDial" aria-live="polite">
+            <span id="pomodoroTime">25:00</span>
+        </div>
+        <div class="pomodoro-controls">
+            <button id="pomodoroStartPause" type="button">Start</button>
+            <button id="pomodoroReset" type="button">Reset</button>
+            <button id="pomodoroSkipBreak" type="button">Skip</button>
+        </div>
+        <div class="pomodoro-duration-settings">
+            <label class="pomodoro-duration-field" for="pomodoroFocusMinutes">
+                <span id="pomodoroFocusLengthLabel">Focus length</span>
+                <input id="pomodoroFocusMinutes" type="number" min="1" max="120" step="1" value="25">
+                <span id="pomodoroFocusMinutesLabel">min</span>
+            </label>
+            <label class="pomodoro-duration-field" for="pomodoroBreakMinutes">
+                <span id="pomodoroBreakLengthLabel">Break length</span>
+                <input id="pomodoroBreakMinutes" type="number" min="1" max="120" step="1" value="5">
+                <span id="pomodoroBreakMinutesLabel">min</span>
+            </label>
+        </div>
     </div>
 
     <!-- --------------------- Bookmark System --------------------- -->
@@ -1362,6 +1401,18 @@
                                         </div>
                                         <label class="switch">
                                             <input id="todoListCheckbox" type="checkbox">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="ttcont">
+                                        <div class="texts">
+                                            <div class="bigText" id="pomodoroTimerText">Pomodoro Timer</div>
+                                            <div class="infoText" id="pomodoroTimerInfo">Track 25-minute focus and
+                                                5-minute break sessions</div>
+                                        </div>
+                                        <label class="switch">
+                                            <input id="pomodoroTimerCheckbox" type="checkbox">
                                             <span class="toggle"></span>
                                         </label>
                                     </div>

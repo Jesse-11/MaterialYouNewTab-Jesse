@@ -138,6 +138,8 @@ function applyLanguage(lang) {
         "googleAppsMenuInfo",
         "todoListText",
         "todoListInfo",
+        "pomodoroTimerText",
+        "pomodoroTimerInfo",
         "fahrenheitCelsiusCheckbox",
         "fahrenheitCelsiusText",
         "minMaxTempText",
@@ -205,6 +207,7 @@ function applyLanguage(lang) {
         "github",
         "googleAppsHover",
         "todoListHover",
+        "pomodoroHover",
         "uploadWallpaperText",
         "backupText",
         "restoreText",
@@ -258,6 +261,13 @@ function applyLanguage(lang) {
     // Mapping of elements and their different translation keys
     const elementsMap = [
         { id: "todoListHeading", key: "todoListText" },
+        { id: "pomodoroHeading", key: "pomodoroTimerText" },
+        { id: "pomodoroReset", key: "pomodoroReset" },
+        { id: "pomodoroSkipBreak", key: "pomodoroSkip" },
+        { id: "pomodoroFocusLengthLabel", key: "pomodoroFocusLength" },
+        { id: "pomodoroBreakLengthLabel", key: "pomodoroBreakLength" },
+        { id: "pomodoroFocusMinutesLabel", key: "pomodoroMinutesSuffix" },
+        { id: "pomodoroBreakMinutesLabel", key: "pomodoroMinutesSuffix" },
         { id: "defaultEngineDD", key: "defaultEngine" },
         { id: "googleEngineDD", key: "googleEngine" },
         { id: "duckEngineDD", key: "duckEngine" },
@@ -380,7 +390,7 @@ function applyLanguage(lang) {
     // Apply the direction attribute to specific selectors for RTL languages
     const isRTL = rtlLanguages.includes(lang);
     const rtlSelectors = [".topDiv", ".searchbar", ".searchWithCont", ".resultBox", ".quotesCont",
-        ".leftDiv", ".shortcutsContainer", ".page", "#prompt-modal-box", ".todo-container",
+        ".leftDiv", ".shortcutsContainer", ".page", "#prompt-modal-box", ".todo-container", ".pomodoro-container",
         ".bookmark-search-container", ".bookmark-controls-container", "#editBookmarkModal", ".liquidGlass-toast"];
 
     rtlSelectors.forEach(selector => {
